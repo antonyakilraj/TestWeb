@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>  
+var request;
+function sendInfo()
+{  
+var v=document.ping.dir.value;
+var url="LdapConnection.jsp?value="+v;
+ 
+request=new XMLHttpRequest();
+request.onreadystatechange=getInfo;
+request.open("GET",url,true);
+request.send();
+
+}
+  
+  
+ function getInfo()
+{
+
+if(request.readyState==4){
+var value=request.responseText;
+document.getElementById('output_code').innerHTML=value;  
+} 
+
+
+}  
+  
+</script>
+</head>
+<body>
+	<h1>Enter uid</h1>
+	<form name="ping">
+		<input type="text" name="dir"> <input type="button"
+			value="Submit" onClick="sendInfo()">
+	</form>
+
+	<span id="output_code"></span>
+
+</body>
+</html>

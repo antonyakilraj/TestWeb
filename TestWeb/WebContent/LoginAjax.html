@@ -1,0 +1,41 @@
+<html>
+<head>
+<script>  
+var request;
+function sendInfo()
+{  
+var v=document.akil.raj.value;
+var url="LoginValues.jsp?value="+v;
+ 
+request=new XMLHttpRequest();
+
+request.open("GET",url,true);
+request.send();
+request.onreadystatechange=getInfo;
+}
+  
+  
+ function getInfo()
+{
+
+if(request.readyState==4){
+var value=request.responseText;
+document.getElementById('secret_code').innerHTML=value;  
+} 
+
+
+}  
+  
+</script>
+</head>
+<body>
+	<h1>Enter your name</h1>
+	<form name="akil">
+		<input type="text" name="raj"> <input type="button"
+			value="Submit" onClick="sendInfo()">
+	</form>
+
+	<span id="secret_code">Surprise message!! </span>
+
+</body>
+</html>
